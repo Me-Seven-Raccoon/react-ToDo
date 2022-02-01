@@ -5,23 +5,11 @@ import './task.css'
 
 export default class TaskItem extends Component{
 
-    state = {
-        completed: false
-    }
 
-    onInputClick = () => {
-        this.setState((state) => {
-            return {
-                completed: !state.completed
-            }
-        })
-    }
 
 
     render() {
-        const {label, onDeleted} = this.props
-
-        const { completed } = this.state
+        const {label, onDeleted, onCompleted, completed} = this.props
 
         let classNames = ''
         if(completed){
@@ -30,7 +18,7 @@ export default class TaskItem extends Component{
         return (
             <li className={classNames}>
                 <div className='view'>
-                    <input className='toggle' type='checkbox' onClick={this.onInputClick}/>
+                    <input className='toggle' type='checkbox' onClick={onCompleted}/>
                     <label>
                         <span className='description'>
                             {label}</span>
