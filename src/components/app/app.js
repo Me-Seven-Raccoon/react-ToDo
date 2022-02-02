@@ -17,14 +17,14 @@ export default class App extends Component{
             this.createItem('Coffee'),
             this.createItem('Green tea'),
             this.createItem('Orange juice')
-        ]
+        ],
+        filterViewStatus: 'all',
     }
 
     createItem(label){
         return {
             label,
             completed: false,
-            filters: 'all',
             id: this.maxId++
         }
     }
@@ -75,41 +75,22 @@ export default class App extends Component{
     }
 
     completedButton = () => {
-        this.setState(({dataList}) => {
-            const idx = dataList.map((el) => {
-               const newItem = {...el, filters: 'completed'}
-                return newItem
-            })
-            return {
-                dataList: idx
-            }
+        this.setState({
+            filterViewStatus: 'completed'
         })
     }
 
     allButton =() => {
-        this.setState(({dataList}) => {
-            const idx = dataList.map((el) => {
-                const newItem = {...el, filters: 'all'}
-                return newItem
-            })
-            return {
-                dataList: idx
-            }
+        this.setState({
+            filterViewStatus: 'all'
         })
     }
 
     activeButton =() => {
-        this.setState(({dataList}) => {
-            const idx = dataList.map((el) => {
-                const newItem = {...el, filters: 'active'}
-                return newItem
-            })
-            return {
-                dataList: idx
-            }
+        this.setState({
+            filterViewStatus: 'active'
         })
     }
-
     deleteCompleted = () => {
         this.setState(({dataList}) => {
             const idx = dataList.map((el) => el).filter((el) => el.completed)
@@ -137,6 +118,7 @@ export default class App extends Component{
                 </header>
                 <section className='main'>
                     <TaskList todos ={this.state.dataList}
+                              status ={this.state.filterViewStatus}
                               onDeleted = { this.deletItem }
                               onCompleted = {this.onCompleted}/>
                     <Footer newCount = {newCount}
