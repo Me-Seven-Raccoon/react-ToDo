@@ -9,6 +9,8 @@ import NewTaskForm from "../new-task-form";
 import TaskList from "../task-list";
 import Footer from "../footer";
 
+
+
 export default class App extends Component{
 
     maxId = 100;
@@ -25,7 +27,8 @@ export default class App extends Component{
         return {
             label,
             completed: false,
-            id: this.maxId++
+            id: this.maxId++,
+            date: new Date(),
         }
     }
 
@@ -79,13 +82,11 @@ export default class App extends Component{
             filterViewStatus: 'completed'
         })
     }
-
     allButton =() => {
         this.setState({
             filterViewStatus: 'all'
         })
     }
-
     activeButton =() => {
         this.setState({
             filterViewStatus: 'active'
@@ -105,7 +106,12 @@ export default class App extends Component{
     }
 
 
+
+
     render() {
+
+
+
         const completedCount = this.state.dataList
                                 .filter((el) => el.completed).length;
         const newCount = this.state.dataList.length - completedCount

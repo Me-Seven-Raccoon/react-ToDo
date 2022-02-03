@@ -1,4 +1,6 @@
 import React, {Component} from "react";
+import PropTypes from 'prop-types'
+
 
 import './task-list-filter.css'
 
@@ -27,5 +29,13 @@ export default class TaskListFilter extends Component{
     }
 }
 
-
-
+TaskListFilter.defaultProps = {
+    completedButton: () => {},
+    allButton: () => {},
+    activeButton: () => {},
+}
+TaskListFilter.propTypes = {
+    completedButton: PropTypes.func,
+    allButton: PropTypes.func,
+    activeButton: PropTypes.func,
+}

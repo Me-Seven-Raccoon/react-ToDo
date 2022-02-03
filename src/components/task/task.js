@@ -1,4 +1,6 @@
 import React, {Component} from "react";
+import { formatDistanceToNow } from 'date-fns'
+import PropTypes from "prop-types";
 
 import './task.css'
 
@@ -9,7 +11,7 @@ export default class TaskItem extends Component{
 
 
     render() {
-        const {label, onDeleted, onCompleted, completed} = this.props
+        const {label, onDeleted, onCompleted, completed, date} = this.props
 
         let classNames = ''
         if(completed){
@@ -22,7 +24,8 @@ export default class TaskItem extends Component{
                     <label>
                         <span className='description'>
                             {label}</span>
-                        <span className='created'>time</span>
+                        <span className='created'>{formatDistanceToNow(date,
+                            { includeSeconds: true })}</span>
                     </label>
                     <button className='icon icon-edit'/>
                     <button className='icon icon-destroy'
@@ -33,3 +36,18 @@ export default class TaskItem extends Component{
     }
 }
 
+TaskItem.defaultProps = {
+    label: '',
+    onDeleted: () => {},
+    onCompleted: () => {},
+    completed: true,
+    date: new Date(),
+}
+
+TaskItem.propTypes = {
+    label: PropTypes.string,
+    onDeleted: PropTypes.func,
+    onCompleted: PropTypes.func,
+    completed: PropTypes.bool,
+    date: PropTypes.object,
+}

@@ -1,12 +1,12 @@
 import React, {Fragment} from "react";
 import TaskItem from "../task"
+import PropTypes from "prop-types";
 
 
 import './task-list.css'
 
 export const TaskList = ({ todos, status, onDeleted, onCompleted }) => {
     let result;
-
     if(status === 'completed'){
         result = todos.filter((el) => el.completed)
     }
@@ -32,6 +32,19 @@ export const TaskList = ({ todos, status, onDeleted, onCompleted }) => {
     )
 }
 
+
+TaskList.defaultProps = {
+    status: "all",
+    onDeleted: () => {},
+    onCompleted: () => {},
+}
+
+TaskList.propTypes = {
+    todos: PropTypes.arrayOf(PropTypes.object),
+    status: PropTypes.string,
+    onDeleted: PropTypes.func,
+    onCompleted: PropTypes.func,
+}
 
 
 

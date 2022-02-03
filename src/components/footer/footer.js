@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import PropTypes from 'prop-types'
 
 import './footer.css'
 import TaskListFilter from "../task-list-filter";
@@ -21,27 +22,23 @@ export default class Footer extends Component{
                     activeButton={activeButton}
                     deletCompleted={deleteCompleted}
                 />
-
-                {/*<ul className='filters'>*/}
-                {/*    <li>*/}
-                {/*        <button className='selected'*/}
-                {/*                onClick={allButton}>All</button>*/}
-                {/*    </li>*/}
-                {/*    <li>*/}
-                {/*        <button*/}
-                {/*            onClick={activeButton}>*/}
-                {/*            Active</button>*/}
-                {/*    </li>*/}
-                {/*    <li>*/}
-                {/*        <button*/}
-                {/*        onClick={completedButton}>Completed</button>*/}
-                {/*    </li>*/}
-                {/*    <button className='clear-completed'>Clear completed</button>*/}
-                {/*</ul>*/}
                 <button className='clear-completed'
                 onClick={deleteCompleted}>Clear completed</button>
             </footer>
         )
     }
+}
 
+Footer.defaultProps = {
+    completedButton: () => {},
+    allButton: () => {},
+    activeButton: () => {},
+    deleteCompleted: () => {},
+}
+Footer.propTypes ={
+    newCount: PropTypes.number.isRequired,
+    completedButton: PropTypes.func,
+    allButton: PropTypes.func,
+    activeButton: PropTypes.func,
+    deleteCompleted: PropTypes.func,
 }
