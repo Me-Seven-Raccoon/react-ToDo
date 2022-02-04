@@ -71,7 +71,7 @@ export default class App extends Component {
   activeButton = () => {
     this.setState({
       filterViewStatus: 'active',
-    })
+    });
   }
   deleteCompleted = () => {
     this.setState(({ dataList }) => {
