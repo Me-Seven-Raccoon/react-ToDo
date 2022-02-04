@@ -1,3 +1,3 @@
-import TaskListFilter from "./task-list-filter";
+import TaskListFilter from './task-list-filter'
 
 export default TaskListFilter
