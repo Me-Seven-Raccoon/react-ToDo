@@ -71,7 +71,7 @@ export default class App extends Component {
   activeButton = () => {
     this.setState({
       filterViewStatus: 'active',
-    });
+    })
   }
   deleteCompleted = () => {
     this.setState(({ dataList }) => {
@@ -88,7 +88,7 @@ export default class App extends Component {
   render() {
     const completedCount = this.state.dataList.filter((el) => el.completed).length
     const newCount = this.state.dataList.length - completedCount
-    const test = 1 + 1;
+    const newCounts = this.state.dataList.length - completedCount
 
     return (
       <section className="todoapp">
