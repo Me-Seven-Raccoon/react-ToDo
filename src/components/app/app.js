@@ -88,7 +88,6 @@ export default class App extends Component {
   render() {
     const completedCount = this.state.dataList.filter((el) => el.completed).length
     const newCount = this.state.dataList.length - completedCount
-    const ss;
 
     return (
       <section className="todoapp">
