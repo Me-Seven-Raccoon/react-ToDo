@@ -21,7 +21,6 @@
     "lint": "eslint ./src",
     "lint:fix": "eslint ./src --fix",
     "format": "prettier --write src/**/*.js",
-    "forma2t": "prettier --write src/**/*.js",
     "pre-commit": "lint-staged"
   },
   "eslintConfig": {
