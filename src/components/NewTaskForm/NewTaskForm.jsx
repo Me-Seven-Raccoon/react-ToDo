@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import './new-task-form.css'
+import './NewTaskForm.css'
 
 export default class NewTaskForm extends Component {
   state = {
@@ -24,13 +24,15 @@ export default class NewTaskForm extends Component {
   render() {
     return (
       <form onSubmit={this.onSubmit}>
-        <input
-          className="new-todo"
-          placeholder="What needs to be done?"
-          type="text"
-          onChange={this.onLabelChange}
-          value={this.state.label}
-        />
+        <label>
+          <input
+            className="new-todo"
+            placeholder="What needs to be done?"
+            type="text"
+            onChange={this.onLabelChange}
+            value={this.state.label}
+          />
+        </label>
       </form>
     )
   }

@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 
-import TaskItem from '../task'
+import { TaskItem } from '../TaskItem'
 
-import './task-list.css'
+import './TaskList.css'
 
-export function TaskList({ todos, status, onDeleted, onCompleted }) {
+const TaskList = ({ todos, status, onDeleted, onCompleted, editButton }) => {
   let result
   if (status === 'completed') {
     result = todos.filter((el) => el.completed)
@@ -21,12 +21,19 @@ export function TaskList({ todos, status, onDeleted, onCompleted }) {
     <ul className="todo-list">
       {result.map(({ id, ...itemProps }) => (
         <Fragment key={id}>
-          <TaskItem {...itemProps} onDeleted={() => onDeleted(id)} onCompleted={() => onCompleted(id)} />
+          <TaskItem
+            {...itemProps}
+            onDeleted={() => onDeleted(id)}
+            onCompleted={() => onCompleted(id)}
+            editButton={() => editButton(id)}
+          />
         </Fragment>
       ))}
     </ul>
   )
 }
+
+export default TaskList
 
 TaskList.defaultProps = {
   status: 'all',

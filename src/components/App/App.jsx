@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 
-import './app.css'
+import './App.css'
 
-import NewTaskForm from '../new-task-form'
-import TaskList from '../task-list'
-import Footer from '../footer'
+import { NewTaskForm } from '../NewTaskForm'
+import { TaskList } from '../TaskList'
+import { Footer } from '../Footer'
 
 export default class App extends Component {
   maxId = 100
@@ -16,6 +16,7 @@ export default class App extends Component {
   createItem(label) {
     return {
       label,
+      edit: false,
       completed: false,
       id: this.maxId++,
       date: new Date(),
@@ -23,15 +24,16 @@ export default class App extends Component {
   }
 
   addItem = (text) => {
-    const newItem = this.createItem(text)
-    this.setState(({ dataList }) => {
-      const newArr = [...dataList, newItem]
-      return {
-        dataList: newArr,
-      }
-    })
+    if (text.length !== 0 && !text.match(/^[ ]+$/)) {
+      const newItem = this.createItem(text)
+      this.setState(({ dataList }) => {
+        const newArr = [...dataList, newItem]
+        return {
+          dataList: newArr,
+        }
+      })
+    }
   }
-
   deletItem = (id) => {
     this.setState(({ dataList }) => {
       const idx = dataList.findIndex((el) => el.id === id)
@@ -101,6 +103,7 @@ export default class App extends Component {
             status={this.state.filterViewStatus}
             onDeleted={this.deletItem}
             onCompleted={this.onCompleted}
+            editButton={this.editButton}
           />
           <Footer
             newCount={newCount}

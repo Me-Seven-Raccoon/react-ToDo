@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import './footer.css'
-import TaskListFilter from '../task-list-filter'
+import './Footer.css'
+import { TaskListFilter } from '../TaskListFilter'
 
 export default class Footer extends Component {
   render() {
