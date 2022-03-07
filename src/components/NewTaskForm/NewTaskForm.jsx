@@ -1,39 +1,32 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 
 import './NewTaskForm.css'
 
-export default class NewTaskForm extends Component {
-  state = {
-    label: '',
+const NewTaskForm = ({ onItemAdded }) => {
+  const [label, setLabel] = useState('')
+
+  const onLabelChange = (e) => {
+    setLabel(e.target.value)
   }
 
-  onLabelChange = (e) => {
-    this.setState({
-      label: e.target.value,
-    })
-  }
-
-  onSubmit = (e) => {
+  const onSubmit = (e) => {
     e.preventDefault()
-    this.props.onItemAdded(this.state.label)
-    this.setState({
-      label: '',
-    })
+    onItemAdded(label)
+    setLabel('')
   }
-
-  render() {
-    return (
-      <form onSubmit={this.onSubmit}>
-        <label>
-          <input
-            className="new-todo"
-            placeholder="What needs to be done?"
-            type="text"
-            onChange={this.onLabelChange}
-            value={this.state.label}
-          />
-        </label>
-      </form>
-    )
-  }
+  return (
+    <form onSubmit={onSubmit}>
+      <label>
+        <input
+          className="new-todo"
+          placeholder="What needs to be done?"
+          type="text"
+          onChange={onLabelChange}
+          value={label}
+        />
+      </label>
+    </form>
+  )
 }
+
+export default NewTaskForm

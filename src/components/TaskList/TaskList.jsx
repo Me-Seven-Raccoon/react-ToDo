@@ -5,7 +5,7 @@ import { TaskItem } from '../TaskItem'
 
 import './TaskList.css'
 
-const TaskList = ({ todos, status, onDeleted, onCompleted, editButton }) => {
+const TaskList = ({ todos, status, onDeleted, onCompleted }) => {
   let result
   if (status === 'completed') {
     result = todos.filter((el) => el.completed)
@@ -21,12 +21,7 @@ const TaskList = ({ todos, status, onDeleted, onCompleted, editButton }) => {
     <ul className="todo-list">
       {result.map(({ id, ...itemProps }) => (
         <Fragment key={id}>
-          <TaskItem
-            {...itemProps}
-            onDeleted={() => onDeleted(id)}
-            onCompleted={() => onCompleted(id)}
-            editButton={() => editButton(id)}
-          />
+          <TaskItem {...itemProps} onDeleted={() => onDeleted(id)} onCompleted={() => onCompleted(id)} />
         </Fragment>
       ))}
     </ul>

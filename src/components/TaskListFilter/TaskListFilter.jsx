@@ -1,29 +1,26 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
 import './TaskListFilter.css'
 
-export default class TaskListFilter extends Component {
-  render() {
-    const { completedButton, allButton, activeButton } = this.props
-
-    return (
-      <ul className="filters">
-        <li>
-          <button className="selected" onClick={allButton}>
-            All
-          </button>
-        </li>
-        <li>
-          <button onClick={activeButton}>Active</button>
-        </li>
-        <li>
-          <button onClick={completedButton}>Completed</button>
-        </li>
-      </ul>
-    )
-  }
+const TaskListFilter = ({ completedButton, allButton, activeButton }) => {
+  return (
+    <ul className="filters">
+      <li>
+        <button className="selected" onClick={allButton}>
+          All
+        </button>
+      </li>
+      <li>
+        <button onClick={activeButton}>Active</button>
+      </li>
+      <li>
+        <button onClick={completedButton}>Completed</button>
+      </li>
+    </ul>
+  )
 }
+export default TaskListFilter
 
 TaskListFilter.defaultProps = {
   completedButton: () => {},
