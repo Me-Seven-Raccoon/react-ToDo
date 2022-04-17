@@ -3,19 +3,24 @@ import PropTypes from 'prop-types'
 
 import './TaskListFilter.css'
 
-const TaskListFilter = ({ completedButton, allButton, activeButton }) => {
+const TaskListFilter = ({ completedButton, allButton, activeButton, status }) => {
+  console.log(status)
   return (
     <ul className="filters">
       <li>
-        <button className="selected" onClick={allButton}>
+        <button className={status === 'all' ? 'selected' : null} onClick={allButton}>
           All
         </button>
       </li>
       <li>
-        <button onClick={activeButton}>Active</button>
+        <button className={status === 'active' ? 'selected' : null} onClick={activeButton}>
+          Active
+        </button>
       </li>
       <li>
-        <button onClick={completedButton}>Completed</button>
+        <button className={status === 'completed' ? 'selected' : null} onClick={completedButton}>
+          Completed
+        </button>
       </li>
     </ul>
   )

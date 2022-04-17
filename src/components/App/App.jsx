@@ -60,7 +60,6 @@ const App = () => {
       return newIdx
     })
   }
-
   const completedCount = dataList.filter((el) => el.completed).length
   const newCount = dataList.length - completedCount
   return (
@@ -77,6 +76,7 @@ const App = () => {
           allButton={allButton}
           activeButton={activeButton}
           deleteCompleted={deleteCompleted}
+          status={filterViewStatus}
         />
       </section>
     </section>

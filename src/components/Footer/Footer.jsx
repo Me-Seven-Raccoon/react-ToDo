@@ -4,11 +4,12 @@ import PropTypes from 'prop-types'
 import './Footer.css'
 import { TaskListFilter } from '../TaskListFilter'
 
-const Footer = ({ newCount, completedButton, allButton, activeButton, deleteCompleted }) => {
+const Footer = ({ newCount, completedButton, allButton, activeButton, deleteCompleted, status }) => {
   return (
     <footer className="footer">
       <span className="todo-count"> {newCount} items</span>
       <TaskListFilter
+        status={status}
         completedButton={completedButton}
         allButton={allButton}
         activeButton={activeButton}
